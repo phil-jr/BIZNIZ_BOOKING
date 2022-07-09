@@ -1,0 +1,29 @@
+.top-banner{
+    padding: 20px 40px;
+    height: 13em;
+    background-color: cadetblue;
+}
+
+.top-text-wrapper{
+    display: inline-block;
+    margin-bottom: -250px;
+    position: absolute;
+}
+
+.profile-image{
+    display: inline-block;
+    width: 8em;
+    height: 8em;
+    background-color: azure;
+    border-radius: 4em;
+    margin: 2em;
+    border: 5px solid #2c2c2c;
+    /*margin-top: .6em;*/
+}
+
+
+
+::ng-deep mat-sidenav-content{
+    padding: 60px 0px !important;
+}
+

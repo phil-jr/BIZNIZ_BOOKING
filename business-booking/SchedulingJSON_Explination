@@ -1,0 +1,18 @@
+ "schedule": {
+        "dayStart": "2021 MARCH",
+        "dayEnd": "2021 AUGUST",
+        "exceptionDays": [ //A LIST OF DAYS THAT ARE EXCEPTIONS TO THE DEFAULT DAYS
+            {
+                "exceptionDay": "TUES MAY, 12th 2021",
+                "exceptionTimes": [] //IF THIS IS BLANK WE ASSUME IT IS THE ENTIRE DAY
+            }
+        ],
+        "daysOfWeek": ["mon","tues","wed","thurs","fri"], DAYS OF THE WEEK THAT YOU WANT THIS FORM TO BE AVAILABLE FOR
+        "sundayTimes": [],
+        "mondayTimes": [{"startTime":"5:30 AM", "endTime":"6:00AM"}], //A LIST OF START AND END TIMES THROUGHOUT THE DAY
+        "tuesdayTimes": [],
+        "wednesdayTimes": [],
+        "thursdayTimes": [{"startTime":"8:00 AM", "endTime":"10:00AM"}],
+        "fridayTimes": [],
+        "saturdayTimes": []
+    }

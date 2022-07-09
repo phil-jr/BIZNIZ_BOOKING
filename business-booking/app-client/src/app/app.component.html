@@ -1,0 +1,34 @@
+<div style="height: 100vh;">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="menu-spacer"></span>
+      <div fxShow="true" fxHide.lt-md class="toolBarHeader">
+        <a *ngIf="showSignIn()" href="/signin" mat-button>Sign In</a>
+        <a *ngIf="showSignIn()" href="/signup" mat-button>Sign Up</a>
+        <a *ngIf="!showSignIn()" (click)="signOut()" mat-button>Sign Out</a>
+        <a *ngIf="showBusiness()" href="/business/{{businessUsername}}" mat-button>Profile</a>
+        <a *ngIf="showCustomer()" href="/customer/{{customerUsername}}" mat-button>Profile</a>
+        <a *ngIf="showBusiness()" href="/dashboard" mat-button>Dashboard</a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <a *ngIf="showSignIn()" href="/signin" mat-list-item>Sign In</a>
+        <a *ngIf="showSignIn()" href="/signup" mat-list-item>Sign Up</a>
+        <a *ngIf="!showSignIn()" (click)="signOut()" mat-list-item>Sign Out</a>
+        <a *ngIf="showBusiness()" href="/business/{{businessUsername}}" mat-list-item>Profile</a>
+        <a *ngIf="showCustomer()" href="/customer/{{customerUsername}}" mat-list-item>Profile</a>
+        <a *ngIf="showBusiness()" href="/business/dashboard" mat-list-item>Dashboard</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

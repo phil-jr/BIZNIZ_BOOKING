@@ -1,0 +1,16 @@
+.announcements-wrapper{
+    margin: 15px 0px;
+}
+
+.announcemnt-textarea {
+    width: 70%;
+}
+
+.post-button{
+    padding: 10px 30px;
+}
+
+.announcemnt-textarea textarea{
+    height: 9em !important;
+    resize: none;
+}

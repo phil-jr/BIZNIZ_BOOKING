@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="row cards-wrapper">
+        <div class="col-md-6 col-lg-4 col-sm-12" *ngFor="let form of forms">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>{{form.formName}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    HELLO
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-md-6 col-lg-4 col-sm-12">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Manage Forms</mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="add-form-card-content" [routerLink]="['/dashboard/create-form']">
+                        <mat-icon class="add-form">add_circle</mat-icon><br>
+                        Add Form
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+Confluent Kafka --> Notifications | Business Updates | Chat Messages | APPOINTMENT-BOOKING
+MYSQL --> DB
+FLUTTER --> App Development
+
+TODO: Add last signout to business and customers database!!! trust me this is for Notifications
+
+WHAT NEEDS TO GO INTO CUSTOMER PROFILE:
+>announcments from businesses
+>current and past forms (appointments) with businesses
+>DMs with businesses
+>Businesses the customer may like
+>List of businesses they follow
+>settings
+
+TECHNOLOGIES BEING USED
+Spring Boot
+Kafka
+Node.js
+Express
+Kubernetes
+MySQL
+Flutter
+Git
+Google Cloud Platform
+Firebase
+
+
+
+https://cloud.google.com/architecture/creating-cicd-pipeline-vsts-kubernetes-engine
+
+
+RESETING azure pipeline
+
+sudo service ntp stop
+sudo ntpd -gq
+sudo service ntp start

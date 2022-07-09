@@ -1,0 +1,26 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col" id="chart-col" #colRef>
+            <ngx-charts-line-chart
+            [view]="[colRef.offsetWidth, colRef.offsetHeight]"
+            [scheme]="colorScheme"
+            [legend]="legend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxis]="xAxis"
+            [yAxis]="yAxis"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            [timeline]="timeline"
+            [results]="data"
+            (select)="onSelect($event)"
+            (activate)="onActivate($event)"
+            (deactivate)="onDeactivate($event)"
+            style="fill: #FFF;"
+            >
+            </ngx-charts-line-chart>
+        </div>
+    </div>
+</div>
+

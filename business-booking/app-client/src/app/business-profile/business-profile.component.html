@@ -1,0 +1,29 @@
+<div>
+    <div class="row">
+        <div class="col-md-12 top-banner">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="profile-image">
+                    </div>
+                    <div class="top-text-wrapper">
+                        <h1>{{business.name}}</h1>
+                        <button mat-flat-button (click)="follow()" *ngIf="!isFollowing">SUBSCRIBE</button>
+                        <button mat-flat-button (click)="follow()" *ngIf="isFollowing">UNSUBSCRIBE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div  class="col-md-1"></div>
+        <div class="col-md-10">
+            <mat-tab-group dynamicHeight>
+                <mat-tab label="Overview"> <business-overview></business-overview> </mat-tab>
+                <mat-tab label="Book Appointment"> <book-appointment></book-appointment> </mat-tab>
+                <mat-tab label="Announcements"><business-announcements [business]="business"></business-announcements></mat-tab>
+                <mat-tab label="Reviews"> <business-reviews></business-reviews> </mat-tab>
+                <mat-tab label="Customers"> <business-customers [business]="business"></business-customers> </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>

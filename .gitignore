@@ -1,0 +1,6 @@
+.idea
+
+business-booking/app-api/src/main/java/com/gm/fgcf/api/config/KafkaProducerConfig.java
+business-booking/app-api/src/main/resources/application.yml
+websocket-kafka-server/KafkaBase/KafkaBase.js
+business-booking/app-client/src/app/service/socket.service.ts

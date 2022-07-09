@@ -1,0 +1,208 @@
+<?xml version="1.0" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.gm.fgcf.otd</groupId>
+    <artifactId>app-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>app-client</artifactId>
+  <name>app-client</name>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <profiles>
+    <profile>
+      <id>LOCAL</id>
+      <properties>
+        <build.profile.id>LOCAL</build.profile.id>
+        <rp.build.warname>local</rp.build.warname>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.github.eirslett</groupId>
+            <artifactId>frontend-maven-plugin</artifactId>
+            <version>1.0</version>
+            <executions>
+              <execution>
+                <id>Install node and npm locally to the project</id>
+                <goals>
+                  <goal>install-node-and-npm</goal>
+                </goals>
+                <configuration>
+                  <skip>true</skip>
+                  <nodeVersion>v13.3.0</nodeVersion>
+                  <npmVersion>6.14.4</npmVersion>
+                  <workingDirectory>${project.parent.basedir}/app-client/</workingDirectory>
+                </configuration>
+              </execution>
+
+              <execution>
+                <id>npm install</id>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+              </execution>
+
+              <execution>
+                <id>Build frontend</id>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+                <configuration>
+                  <arguments>run build</arguments>
+                </configuration>
+              </execution>
+
+              <execution>
+                <id>prod</id>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+                <configuration>
+                  <arguments>run-script build</arguments>
+                </configuration>
+                <phase>generate-resources</phase>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>DEV</id>
+      <properties>
+        <build.profile.id>DEV</build.profile.id>
+        <rp.build.warname>dev</rp.build.warname>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.github.eirslett</groupId>
+            <artifactId>frontend-maven-plugin</artifactId>
+            <version>1.0</version>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>TEST</id>
+      <properties>
+        <build.profile.id>TEST</build.profile.id>
+        <rp.build.warname>test</rp.build.warname>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.github.eirslett</groupId>
+            <artifactId>frontend-maven-plugin</artifactId>
+            <version>1.0</version>
+            <executions>
+              <execution>
+                <id>Install node and npm locally to the project</id>
+                <goals>
+                  <goal>install-node-and-npm</goal>
+                </goals>
+                <configuration>
+                  <skip>true</skip>
+                  <nodeVersion>v13.3.0</nodeVersion>
+                  <npmVersion>6.14.4</npmVersion>
+                  <workingDirectory>${project.parent.basedir}/app-client/</workingDirectory>
+                </configuration>
+              </execution>
+              <execution>
+                <id>npm install</id>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+              </execution>
+
+              <execution>
+                <id>Build frontend</id>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+                <configuration>
+                  <arguments>run buildTest</arguments>
+                </configuration>
+              </execution>
+
+              <execution>
+                <id>prod</id>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+                <configuration>
+                  <arguments>run-script buildTest</arguments>
+                </configuration>
+                <phase>generate-resources</phase>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>PROD</id>
+      <properties>
+        <build.profile.id>PROD</build.profile.id>
+        <rp.build.warname>prod</rp.build.warname>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.github.eirslett</groupId>
+            <artifactId>frontend-maven-plugin</artifactId>
+            <version>1.0</version>
+            <executions>
+              <execution>
+                <id>Install node and npm locally to the project</id>
+                <goals>
+                  <goal>install-node-and-npm</goal>
+                </goals>
+                <configuration>
+                  <skip>true</skip>
+                  <nodeVersion>v13.3.0</nodeVersion>
+                  <npmVersion>6.14.4</npmVersion>
+                  <workingDirectory>${project.parent.basedir}/app-client/</workingDirectory>
+                </configuration>
+              </execution>
+              <execution>
+                <id>npm install</id>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+              </execution>
+
+              <execution>
+                <id>Build frontend</id>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+                <configuration>
+                  <arguments>run buildProduction</arguments>
+                </configuration>
+              </execution>
+
+              <execution>
+                <id>prod</id>
+                <goals>
+                  <goal>npm</goal>
+                </goals>
+                <configuration>
+                  <arguments>run-script buildProduction</arguments>
+                </configuration>
+                <phase>generate-resources</phase>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>
