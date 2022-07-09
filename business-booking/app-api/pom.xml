@@ -17,12 +17,12 @@
     </build>
 
     <parent>
-        <groupId>com.gm.fgcf.otd</groupId>
+        <groupId>com.fpo.app.otd</groupId>
         <artifactId>app-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.gm.fgcf.otd</groupId>
+    <groupId>com.fpo.app.otd</groupId>
     <artifactId>app-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>app-api</name>
