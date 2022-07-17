@@ -1,0 +1,13 @@
+th {
+    width: 150px;
+    text-align: center;
+    padding: 25px;
+}
+
+tr, td {
+    padding: 25px;
+}
+
+.announcement-table {
+    margin-top: 25px;
+}

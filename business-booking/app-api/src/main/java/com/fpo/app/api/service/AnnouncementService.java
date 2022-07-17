@@ -1,9 +1,11 @@
 package com.fpo.app.api.service;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,6 +53,7 @@ public class AnnouncementService {
         params.addValue("sessionId", sessionId);
         params.addValue("message", postMessage.getMessage());
         params.addValue("attachmentId", attachmentId);
+        postMessage.setDateTime(new org.joda.time.LocalDateTime().now().toString());
         KAnnouoncement kAnnouoncement = new KAnnouoncement("announcement", postMessage);
         kafkaProducerConfig.pushToKafkaAnnouncement("TEST-TOPIC", kAnnouoncement, sessionId, "test-feed");
 

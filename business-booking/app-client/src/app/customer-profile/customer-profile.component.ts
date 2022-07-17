@@ -19,7 +19,7 @@ export class CustomerProfileComponent implements OnInit {
 
   dataSource: MatTableDataSource <String> ;
 
-  displayedColumns: string[] = ['message'];
+  displayedColumns: string[] = ['businessUserName', 'message', 'dateTime'];
 
   constructor(private route: ActivatedRoute, private cps: CustomerProfileService, private socketConn: SocketService) { }
 
@@ -35,7 +35,7 @@ export class CustomerProfileComponent implements OnInit {
     this.socketConn.connectToSocket("", "customer", (data)=> {
       let dataObj = JSON.parse(data);
       if (dataObj.process == "announcement") {
-        console.log(this.dataSource)
+        console.log(dataObj);
         this.dataSource.data = [dataObj.announcement, ...this.dataSource.data];
       }
     });
