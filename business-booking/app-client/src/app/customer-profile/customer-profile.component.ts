@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from "@angular/router";
 import { CustomerProfileService } from '../service/customer-profile.service';
+import { SocketService } from '../service/socket.service';
 
 @Component({
   selector: 'app-customer-profile',
@@ -13,12 +15,29 @@ export class CustomerProfileComponent implements OnInit {
     username: ""
   }
 
-  constructor(private route: ActivatedRoute, private cps: CustomerProfileService) { }
+  //public announcmentList = [];
+
+  dataSource: MatTableDataSource <String> ;
+
+  displayedColumns: string[] = ['message'];
+
+  constructor(private route: ActivatedRoute, private cps: CustomerProfileService, private socketConn: SocketService) { }
 
   ngOnInit(): void {
-    this.customer.username = this.route.snapshot.paramMap.get("customer");
-    this.cps.getCustomerProfile(this.customer.username, (data)=> {
-      console.log(data);
+    console.log("alkerjwlekr")
+
+    // this.customer.username = this.route.snapshot.paramMap.get("customer");
+    // this.cps.getCustomerProfile(this.customer.username, (data)=> {
+    //   console.log(data);
+    // });
+    this.dataSource = new MatTableDataSource([]);
+
+    this.socketConn.connectToSocket("", "customer", (data)=> {
+      let dataObj = JSON.parse(data);
+      if (dataObj.process == "announcement") {
+        console.log(this.dataSource)
+        this.dataSource.data = [dataObj.announcement, ...this.dataSource.data];
+      }
     });
   }
 
