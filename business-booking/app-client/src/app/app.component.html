@@ -11,7 +11,6 @@
         <a *ngIf="!showSignIn()" (click)="signOut()" mat-button>Sign Out</a>
         <a *ngIf="showBusiness()" href="/business/{{businessUsername}}" mat-button>Profile</a>
         <a *ngIf="showCustomer()" href="/customer/{{customerUsername}}" mat-button>Profile</a>
-        <a *ngIf="showBusiness()" href="/dashboard" mat-button>Dashboard</a>
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
@@ -24,7 +23,6 @@
         <a *ngIf="!showSignIn()" (click)="signOut()" mat-list-item>Sign Out</a>
         <a *ngIf="showBusiness()" href="/business/{{businessUsername}}" mat-list-item>Profile</a>
         <a *ngIf="showCustomer()" href="/customer/{{customerUsername}}" mat-list-item>Profile</a>
-        <a *ngIf="showBusiness()" href="/business/dashboard" mat-list-item>Dashboard</a>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>

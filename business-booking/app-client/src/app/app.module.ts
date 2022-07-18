@@ -28,17 +28,9 @@ import { SignInCustomerComponent } from './sign-in-page/sign-in-customer/sign-in
 import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
 import { BusinessProfileComponent } from './business-profile/business-profile.component';
 import { BusinessOverviewComponent } from './business-profile/business-overview/business-overview.component';
-import { BookAppointmentComponent } from './business-profile/book-appointment/book-appointment.component';
 import { BusinessReviewsComponent } from './business-profile/business-reviews/business-reviews.component';
 import { BusinessAnnouncementsComponent } from './business-profile/business-announcements/business-announcements.component';
 import { BusinessCustomersComponent } from './business-profile/business-customers/business-customers.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { BusinessAppointmentFormComponent } from './business-appointment-form/business-appointment-form.component';
-import { ManageFormsComponent } from './dashboard/manage-forms/manage-forms.component';
-import { DashboardMessagesComponent } from './dashboard/dashboard-messages/dashboard-messages.component';
-import { DashboardDataComponent } from './dashboard/dashboard-data/dashboard-data.component';
-import { DashboardSchedulingComponent } from './dashboard/dashboard-scheduling/dashboard-scheduling.component';
-import { CreateFormComponent } from './dashboard/manage-forms/create-form/create-form.component';
 
 
 @NgModule({
@@ -51,17 +43,9 @@ import { CreateFormComponent } from './dashboard/manage-forms/create-form/create
     CustomerProfileComponent,
     BusinessProfileComponent,
     BusinessOverviewComponent,
-    BookAppointmentComponent,
     BusinessReviewsComponent,
     BusinessAnnouncementsComponent,
     BusinessCustomersComponent,
-    DashboardComponent,
-    BusinessAppointmentFormComponent,
-    ManageFormsComponent,
-    DashboardMessagesComponent,
-    DashboardDataComponent,
-    DashboardSchedulingComponent,
-    CreateFormComponent
   ],
   imports: [
     BrowserModule,

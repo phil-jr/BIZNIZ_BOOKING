@@ -6,6 +6,7 @@ import com.fpo.app.api.model.KafkaObjects.KFollowPage;
 import com.fpo.app.api.model.returnModel.GenericReturn;
 import com.fpo.app.api.util.ExistsValidateGet;
 import com.fpo.app.api.util.RandomUtil;
+import com.fpo.app.api.constants.SqlConstants;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -14,13 +15,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 
 @Service
 public class CustomerService {
@@ -42,6 +49,9 @@ public class CustomerService {
 
     @Autowired
     KafkaProducerConfig kafkaProducerConfig;
+
+    @Autowired
+    NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     public ResponseEntity<Object> customerSignUp(String payload) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -135,7 +145,7 @@ public class CustomerService {
 
             //Send to kafka
             Customer customer = existsValidateGet.getCustomerBySession(customerSessionId);
-            kafkaProducerConfig.pushToKafka(kafkaProducer, "TEST-TOPIC", new KFollowPage("follow", customer), "username", businessUsername);
+            kafkaProducerConfig.pushToKafkaBusiness("TEST-TOPIC", new KFollowPage("follow", customer), "username", businessUsername);
 
             return ResponseEntity.status(HttpStatus.OK).body(objectMapper.writeValueAsString(gr));
         } catch (Exception e) {
@@ -162,7 +172,7 @@ public class CustomerService {
 
              //Send to kafka
              Customer customer = existsValidateGet.getCustomerBySession(customerSessionId);
-             kafkaProducerConfig.pushToKafka(kafkaProducer, "TEST-TOPIC", new KFollowPage("unfollow", customer), "username", businessUsername);
+             kafkaProducerConfig.pushToKafkaBusiness("TEST-TOPIC", new KFollowPage("unfollow", customer), "username", businessUsername);
 
             return ResponseEntity.status(HttpStatus.OK).body(objectMapper.writeValueAsString(gr));
         } catch (Exception e) {
@@ -188,6 +198,17 @@ public class CustomerService {
 
     public ResponseEntity<Object> getCustomerProfile(String customer){
         return ResponseEntity.status(HttpStatus.OK).body("HELLO " + customer);
+    }
+
+    public List<String> getCustomerSessionsByBusiness(String businessSessionId) {
+        MapSqlParameterSource params = new MapSqlParameterSource();
+        params.addValue("sessionId", businessSessionId);
+        ArrayList<String> customerSession = (ArrayList<String>) namedParameterJdbcTemplate.query(SqlConstants.BUSINESS_CUSTOMER_SESSIONS, params, new RowMapper<String>() {
+            public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return rs.getString("sessionId");
+            }
+        });
+        return customerSession;
     }
 
 }

@@ -3,13 +3,13 @@
         <div class="col-md-12">
             <mat-form-field appearance="fill" class="announcemnt-textarea">
                 <mat-label>Add an anouncement</mat-label>
-                <textarea matInput></textarea>
+                <textarea matInput [(ngModel)]="announcementValue"></textarea>
             </mat-form-field>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
-            <button mat-flat-button class="post-button">Post Announcement</button>
+            <button mat-flat-button class="post-button" (click)="postAnnouncement()">Post Announcement</button>
         </div>
     </div>
 </div>

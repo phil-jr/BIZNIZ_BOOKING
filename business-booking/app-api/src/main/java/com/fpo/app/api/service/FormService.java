@@ -271,7 +271,7 @@ public class FormService {
                 
                 //Send to kafka
                 Customer customer = existsValidateGet.getCustomerBySession(sessionId);
-                kafkaProducerConfig.pushToKafka(kafkaProducer, "TEST-TOPIC", new KBookedAppointment("bookedAppointment", customer, appBooking), "username", appBooking.getBusiness());
+                kafkaProducerConfig.pushToKafkaBusiness("TEST-TOPIC", new KBookedAppointment("bookedAppointment", customer, appBooking), "username", appBooking.getBusiness());
 
                 return ResponseEntity.status(HttpStatus.OK).body("{\"Message\":\"Successfully booked appointment \", \"Errors\":[]}");
             

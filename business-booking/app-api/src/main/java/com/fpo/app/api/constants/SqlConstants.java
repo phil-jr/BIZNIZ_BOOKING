@@ -52,4 +52,12 @@ public class SqlConstants {
                                                             "WHERE formid = (SELECT formid FROM forms WHERE formLinkName = ? " +
                                                             "AND businessId = (SELECT businessid FROM businesses WHERE username = ?)) " +
                                                             "AND available = 1";
+
+
+    //ANNOUNCMENTS
+    public final static String POST_ANNOUNCEMENT = "INSERT INTO announcements VALUES (:announcementId, (SELECT businessId FROM businesssession WHERE sessionId = :sessionId), :message, :attachmentId, NOW())";
+
+    //BUSINESS CUSTOMERS
+    public final static String BUSINESS_CUSTOMER_SESSIONS = "SELECT sessionId FROM customersession WHERE customerId IN (SELECT customerId FROM businesscustomer WHERE businessId = (SELECT businessId FROM businesssession WHERE sessionId = :sessionId))";
+
 }
