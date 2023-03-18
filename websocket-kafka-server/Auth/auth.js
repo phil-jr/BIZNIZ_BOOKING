@@ -12,6 +12,7 @@ function auth (req, res, next){
     var username = auth[0]
     var password = auth[1]
 
+    //Save password to keystore
     if(username == 'KAFKA_DEV' && password =='hZf6T>7F;U)m4kgA}!bnXw-HLSu#[Mz*V9x{&qW5NB@=esPY8.'){
         next();
     }else{
